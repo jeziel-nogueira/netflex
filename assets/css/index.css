@@ -22,6 +22,7 @@ body{
 
 .card {
   background-color: #000000dc;
+  width: 600px;
   padding: 30px;
   border-radius: 4px;
   box-shadow: 3px 3px 1px 0px #000000cc;
@@ -130,4 +131,13 @@ a:hover{
   right: 4px;
   cursor: pointer;
   color: #8a8a8a;
+}
+
+#msgError{
+    text-align: center;
+    color: #ffffff;
+    background-color: #ffa600;
+    padding: 10px;
+    border-radius: 4px;
+    display: none;
 }

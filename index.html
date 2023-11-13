@@ -13,20 +13,22 @@
         <div class='card'>
           <h1>Netflex</h1>
           <h2>Entrar</h2>
+
+          <div id="msgError"></div>
           
           <div class='label-float'>
             <input type='text' id='usuario' paceholder='' required>
-            <label for='usuario'>Email ou número de telefone</label>
+            <label id="userLabel" for='usuario'>Email ou número de telefone</label>
           </div>
           
           <div class='label-float'>
             <input type='password' id='senha' paceholder='' required>
-            <label for='senha'>Senha</label>
+            <label id="senhaLabel" for='senha'>Senha</label>
             <i class="fa fa-eye" aria-hidden="true"></i>
           </div>
           
           <div class='justify-center'>
-            <button>Entrar</button>
+            <button onclick="entrar()">Entrar</button>
           </div>
           
           <div class='justify-center'>
