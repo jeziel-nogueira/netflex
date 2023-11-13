@@ -4,10 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">  
+    <link rel="stylesheet" href="../css/catalogo.css">
 </head>
 <body>
-    <h1>Estou Logado!</h1>
-    <button onclick="sair()">Sair</button>
-    <script src="../js/catologo.js"></script>
+    <div class="container">
+        <div class="top">
+            <img  id="logo" src="../img/netflexlogo.png" alt="">
+            <div class="buscar">
+                <input id="pesquisa" placeholder="Buscar"/>
+                <button>Buscar</button>
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </div>
+            <div class="user">                
+                <img src="../img/user-icon.png" alt="">
+                <p>Usuário com nome longo</p>
+            </div>
+        </div>
+
+        <div class="mid">
+            <h1>Filmes</h1>
+            <div class="lista">
+                <div class="item">
+                    <h2>filme</h2>
+                    <img src="" alt=""/>
+                </div>
+                <div class="item">
+                    <h2>filme</h2>
+                    <img src="" alt=""/>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom">
+
+        </div>        
+
+        <button onclick="sair()">Sair</button>
+        <script src="../js/catologo.js"></script>
+    </div>
 </body>
 </html>
