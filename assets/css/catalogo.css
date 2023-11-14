@@ -1,76 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 *{
-    margin: 0px;
-    padding: 0px;
-    background-color: rgb(59, 59, 59);
+    box-sizing: border-box;
 }
 
-.top{
+:root{
+    --primary-color: #444444;
+    --secondary-color: #ffffff;
+    --text-color: #ffffff;
+}
+
+body{
+    background-color: var(--primary-color);
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+header{
+    padding: 1rem;
     display: flex;
-    background-image: linear-gradient(rgb(24, 23, 23), rgba(54, 54, 54, 0));
-    padding: 10px;
-    height: 70px;
+    justify-content: flex-end;
 }
 
-.top logo{
-    height: 150px;
-}
-
-.buscar{
-    align-self: center;
-    position: fixed;
-    right: 250px;
-    background: none;
-    padding: 10px;
-}
-
-.user{
-    display: flex;
-    background: none;
-    position: fixed;
-    width: auto;
-    right: 10px;
-    align-self: center;
-    color: #fff;
-}
-
-.user img{
-    background: none;
-    max-width: 50px;
-    
-    margin-right: 10px;
-    border-radius: 6px;
-}
-
-
-.buscar input{
-    background: none;
-    border: none;    
+.search{
+    background-color: transparent;
+    border: 2px solid;
+    border-radius: 50px;
     outline: none;
-    border-radius: 4px;
-    margin-right: 3px;
-    color: #fff;
-    width: 80px;
+    padding: 5px;
+    color: var(--text-color);
+    font-family: inherit;
 }
 
-.buscar button{
-    border: none;
+.search:focus{
+    outline: none;
+    background-color: var(--primary-color);
+}
+
+.buttonLogout{
     background: none;
-    color: #fff;
+    border: none;
+    color: var(--text-color);
     font-size: 16px;
-    text-decoration: solid;
-}
-
-.buscar button:hover{
-    text-decoration: underline;
+    font-weight: bold;
     cursor: pointer;
 }
+.buttonLogout:hover{
+    text-decoration: underline;
+}
 
+main{
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
+.movie{
+    width: 200px;
+    margin: 5px;
+    border-radius: 3px;
+    box-shadow: 0.2px 4px 5px #0000000c;
+    position: relative;
+    overflow: hidden;
+}
 
+.movie img{
+    width: 100%;
+}
 
-.user p{
-    background: none;
-    margin-top: 10px;
-    font-size: 14px;
-    color: #fff;
+.movieinfo{
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 5px;
+}
+
+.movieinfo h3{
+    margin-top: 0;
+}
+
+.movieinfo span{
+    padding: 20px;
+    font-weight: bold;
+}
+
+.overview{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000bb;
+    padding: 10px;
+    border-radius: 4px;
+    max-height: 100%;
+    transform: translateY(101%);
+    transition: transform 0.5s;
+    color: var(--text-color);
+}
+
+.movie:hover .overview{
+    transform: translateY(0);
 }

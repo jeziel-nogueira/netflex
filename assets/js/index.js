@@ -39,7 +39,7 @@ function entrar(){
         }
     });
 
-    if(usuario.value == userValid.user && senha.value == userValid.senha){
+    if((usuario.value == userValid.user && senha.value == userValid.senha) && userValid.user !=''){
         window.location.href = "assets/html/catalogo.html"
 
         let token = Math.random().toString(16).substring(2) + Math.random().toString(16).substring(2)
