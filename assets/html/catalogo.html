@@ -4,16 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">  
+    
     <link rel="stylesheet" href="../css/catalogo.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">  
 </head>
 <body>
     <header id="form">
         <input id="search" class="search" type="text" placeholder="Search">
         <button class="buttonLogout" onclick="sair()">Sair</button>
     </header>
-    <button onclick="Movie()">Log</button>
+    <div class="banner">
+        <div class="banner_content">
+            <div class="banner_img">
+                <img class="capa" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oJagOzBu9Rdd9BrciseCm3U3MCU.jpg" alt="movieImage">
+            </div>
+            <div class="banner_info">
+                <h3>Movie Title</h3>
+                <span class="banner_rate">9.8</span>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, neque.
+                     Corporis quos sed mollitia eaque nam quisquam doloribus fugiat officia 
+                     consequatur earum? Voluptatem nesciunt tempore ad a saepe consequuntur illo.
+                </p>          
+            </div>
+            
+        </div>
+    </div>
+    <button class="tet">Top rated</button>
     <main id="main">
+        <div id="destaque">
+        </div>
+        <div id="lancamentos">
+        </div>
+        <div id="top_rated">
+        </div>
+<!--
         <div class="movie">
             <img class="capa" src="https://media.istockphoto.com/id/1446045811/pt/foto/cinema-concept-front-view-of-red-cinema-chair-with-cup-drink-and-box-of-popcorn-on-blue.jpg?s=1024x1024&w=is&k=20&c=qAxW1e1DM_-l53y5JSPvdhlyWeu-vKS8-a2L5aKd4JM=" alt="movieImage">
             <div class="movieinfo">
@@ -25,9 +50,10 @@
                  Corporis quos sed mollitia eaque nam quisquam doloribus fugiat officia 
                  consequatur earum? Voluptatem nesciunt tempore ad a saepe consequuntur illo.
             </div>
-        </div>        
-              
+        </div>
+-->
     </main>
+    
     <script src="../js/catologo.js"></script>
 </body>
 </html>
