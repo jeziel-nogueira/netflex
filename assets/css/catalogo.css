@@ -5,7 +5,7 @@
 }
 
 :root{
-    --primary-color: #000000;
+    --primary-color: #141414;
     --secondary-color: #242323;
     --text-color: #ffffff;
 }
@@ -102,22 +102,24 @@ body{
 
 main{
     padding-bottom: 20px;
-    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
     height: 100%;
 }
 
-#top_rated{
-    padding-bottom: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+.movToShow{
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 16px;
+    font-size: large;
+    padding-left: 50px;
+    padding-bottom: 10px;
 }
 
+#top_rated,
+#destaque,
 #lancamentos{
     padding-bottom: 20px;
     display: flex;
@@ -125,7 +127,6 @@ main{
     justify-content: center;
     width: 100%;
     height: 100%;
-    background-color: #ffffff;
 }
 
 .movie{
@@ -138,6 +139,8 @@ main{
     position: relative;
     overflow: hidden;
     box-shadow: 1px 1px 1px 1px rgba(255, 255, 255, 0.13);
+    cursor: pointer;
+    background-color: #141414;
 }
 
 .movie img{
@@ -174,29 +177,9 @@ main{
     font-size: 16px;
 }
 .star{
-    padding-right: 5px;
+    padding-right: 10px;
 }
 
 .movie:hover .movieinfo{
-    transform: translateY(0);
-}
-
-/*
-
-.overview{
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #000000bb;
-    padding: 10px;
-    border-radius: 4px;
-    max-height: 100%;
-    transform: translateY(101%);
-    transition: transform 0.5s;
-    color: var(--text-color);
-}
-
-.movie:hover .overview{
     transform: translateY(0);
 }
