@@ -52,7 +52,7 @@ function entrar(){
         senha.setAttribute('style', 'border-color: red')
 
         msgError.setAttribute('style', 'display: block')
-        msgError.innerHTML = 'Desculpe, não encontramos uma conta com esse endereço de email.'
+        msgError.innerHTML = 'Desculpe, não encontramos uma conta com este Usuário.'
         usuario.focus()
     }
     
