@@ -40,12 +40,11 @@ function entrar(){
     });
 
     if((usuario.value == userValid.user && senha.value == userValid.senha) && userValid.user !=''){
-        window.location.href = "assets/html/catalogo.html"
-
         let token = Math.random().toString(16).substring(2) + Math.random().toString(16).substring(2)
         localStorage.setItem('token', token)
-
         localStorage.setItem('userLogado', JSON.stringify(userValid))
+
+        window.location.href = "assets/html/catalogo.html"
     }else{
         userLabel.setAttribute('style', 'color: red')
         usuario.setAttribute('style', 'border-color: red')

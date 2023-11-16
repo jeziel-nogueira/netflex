@@ -27,41 +27,15 @@ const TOP_POPULARITY = '&sort_by=popularity.desc';
 const TOP_RATED = '&sort_by=vote_average.desc';
 
 const BR_MOVIES = BASE_URL + TOP_POPULARITY + '&region=BR' + LANGUAGE;
-const FUTUROS =  BASE_URL + '&language=pt-BR&page=1&include_adult=true&year=2024&query=mm';
-const API_URL = BASE_URL + TOP_RATED  + LANGUAGE + '&region=BR';
+const FUTUROS =  BASE_URL + LANGUAGE + '&page=1&include_adult=true&year=2024&query=mm';
+const API_URL = BASE_URL + TOP_RATED + LANGUAGE + '&region=BR';
 
 
 ///////// chamada cas funçoes para preencher o catalogo
 destaques();
 lancamentosFuturos();
 topRated();
-
-function buscar(){
-    const URL = 'https://api.themoviedb.org/3/search/movie?query='
-    
-    let search = document.querySelector('#search')
-    let value = search.value;
-
-    console.log(value)
-    
-
-    //query=termo
-    fetch(URL + value + '&' + API_KEY)
-        .then(respose => respose.json())
-        .then(data =>{
-            movies = data.results.slice()
-
-            
-            movies.forEach(movie => {                
-            })
-            console.log(movies);
-        }
-    );
-    window.location.href = './results.html'
-
-}
-
-
+let lista = [];
 
 ///////// busca os filmes em destaque para exibir no catalogo
 function destaques(){
@@ -70,17 +44,16 @@ function destaques(){
             .then(respose => respose.json())
             .then(data =>{
                 movies = data.results.slice(0,6)
-                
                 destaque.innerHTML = '';
                 movies.forEach(movie => {
-
+                    lista.push(movie);
                     const {id, title, poster_path, vote_average, overview} = movie
                     const movieElement = document.createElement('div');
 
                     movieElement.classList.add('movie');
                     movieElement.innerHTML = `
-                        <div class="movie">
-                            <img class="capa" src="${IMG_URL+poster_path}" alt="${title}" onClick="loadMovie(${id})">
+                        <div class="movie" onClick="loadMovie(${id})">
+                            <img class="capa" src="${IMG_URL+poster_path}" alt="${title}">
                                 <div class="movieinfo">
                                     <h3>${title}</h3>
                                     <span class="green">
@@ -95,7 +68,6 @@ function destaques(){
                     `
                     destaque.appendChild(movieElement);
                 })
-                console.log(movies);
             }
     );
     
@@ -112,7 +84,7 @@ function lancamentosFuturos(){
                 
                 lancamentos.innerHTML = '';
                 movies.forEach(movie => {
-
+                    lista.push(movie);
                     const {id, title, poster_path, vote_average, overview} = movie
                     const movieElement = document.createElement('div');
 
@@ -148,7 +120,7 @@ function topRated(){
 
             top_rated.innerHTML = '';
             movies.forEach(movie => {
-
+                lista.push(movie);
                 const {id, title, poster_path, vote_average, overview} = movie
                 const movieElement = document.createElement('div');
 
@@ -174,8 +146,24 @@ function topRated(){
     );
 
     
-}/////////////////////////////////////////////////
+}
 
-function loadMovie(id){
-    console.log(id);
+/////////////////////////////////////////////////
+
+function buscar(){
+    let val = document.querySelector('.search')
+    if(val.value != ''){
+        localStorage.setItem('busca', val.value);    
+        console.log(val.value);
+        window.location.href = "./results.html";
+    }
+}
+
+function loadMovie(val){
+    lista.forEach(item =>{
+        if(item.id == val){
+            localStorage.setItem('movieId', JSON.stringify(item))
+        }
+    })
+    window.location.href = "./movieDetail.html";
 }
