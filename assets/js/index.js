@@ -40,11 +40,12 @@ function entrar(){
     });
 
     if((usuario.value == userValid.user && senha.value == userValid.senha) && userValid.user !=''){
+        window.location.href = "assets/html/catalogo.html"
+
         let token = Math.random().toString(16).substring(2) + Math.random().toString(16).substring(2)
         localStorage.setItem('token', token)
-        localStorage.setItem('userLogado', JSON.stringify(userValid))
 
-        window.location.href = "assets/html/catalogo.html"
+        localStorage.setItem('userLogado', JSON.stringify(userValid))
     }else{
         userLabel.setAttribute('style', 'color: red')
         usuario.setAttribute('style', 'border-color: red')
@@ -52,7 +53,7 @@ function entrar(){
         senha.setAttribute('style', 'border-color: red')
 
         msgError.setAttribute('style', 'display: block')
-        msgError.innerHTML = 'Desculpe, não encontramos uma conta com este Usuário.'
+        msgError.innerHTML = 'Desculpe, não encontramos uma conta com esse endereço de email.'
         usuario.focus()
     }
     
