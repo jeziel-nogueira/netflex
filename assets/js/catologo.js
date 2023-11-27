@@ -1,9 +1,13 @@
 let userLogado = JSON.parse(localStorage.getItem('userLogado'));
-let poster = document.querySelector('.movie');
-let main = document.getElementById('main');
-let top_rated = document.getElementById('top_rated');
+let populares = document.getElementById('populares');
 let lancamentos = document.getElementById('lancamentos');
-//let top_rated = document.getElementById('top_rated');
+let emAlta = document.getElementById('emAlta');
+let poster1 = document.getElementById("carousel_Img1");
+let poster2 = document.getElementById("carousel_Img2");
+let poster3 = document.getElementById("carousel_Img3");
+let carousel_Title1 = document.getElementById("carousel_Title1");
+let carousel_Title2 = document.getElementById("carousel_Title2");
+let carousel_Title3 = document.getElementById("carousel_Title3");
 var Exit = document.getElementById('exit');
 
 
@@ -22,67 +26,91 @@ let movies = [];
 const API_KEY = 'api_key=3b13d1c5fa5a243ae3eb4ce36a871a8a';
 
 const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
-const BASE_URL = 'https://api.themoviedb.org/3/';
-const LANGUAGE = '&language=pt-br'
-const API_URL = BASE_URL + 'discover/tv?sort_by=popularity.desc&' + API_KEY + LANGUAGE;
+const LANGUAGE = '&language=pt-br';
 
-
-const FUTUROS =  'https://api.themoviedb.org/3/discover/movie?' + API_KEY + '&with_genres=28';
-const POPULARES = 'https://api.themoviedb.org/3/movie/popular?api_key=3b13d1c5fa5a243ae3eb4ce36a871a8a';
+const CAROUSEL = 'https://api.themoviedb.org/3/trending/movie/day?'+ API_KEY + LANGUAGE;
+const NOWPLAYING =  'https://api.themoviedb.org/3/movie/now_playing?' + API_KEY + LANGUAGE;
+const POPULAR = 'https://api.themoviedb.org/3/movie/popular?' + API_KEY + LANGUAGE;
+const UPCOMING = 'https://api.themoviedb.org/3/movie/upcoming?' + API_KEY + LANGUAGE;
 
 let lista = [];
 
-getMovies(API_URL);
+topMovie();
+lancamentosFuturos();
+nowPlaying();
+loadPosterToCarousel();
 
-function getMovies(url){
-    fetch(url)
+function loadPosterToCarousel(){
+
+    fetch(CAROUSEL)
         .then(respose => respose.json())
         .then(data =>{
             movies = data.results.slice(0,6)
-            topMovie();
-            //Lancamentos();
+            movies.forEach(movie => {
+                lista.push(movie);});
+
+            poster1.src = IMG_URL+ movies[1].backdrop_path;
+            poster1.onclick = function(){console.log(loadMovie(movies[1].id))};
+            carousel_Title1.textContent = movies[1].title;
+
+            poster2.src = IMG_URL+ movies[2].backdrop_path;
+            poster2.onclick = function(){console.log(loadMovie(movies[2].id))};
+            carousel_Title2.textContent = movies[2].title;
+
+            poster3.src = IMG_URL+ movies[3].backdrop_path;
+            poster3.onclick = function(){console.log(loadMovie(movies[3].id))};
+            carousel_Title3.textContent = movies[3].title;
+
+            let timer = '';
+            
         }
     );
 }
 
 
-
-
 function topMovie(){
-    top_rated.innerHTML = '';
-    movies.forEach(movie => {
 
-        lista.push(movie);
-        const {original_name, poster_path, vote_average, overview, id} = movie
-        const movieElement = document.createElement('div');
-
-        movieElement.classList.add('movie');
-        movieElement.innerHTML = `
-            <div class="movie" onClick="loadMovie(${id})">
-                <img class="capa" src="${IMG_URL+poster_path}" alt="${original_name}">
-                    <div class="movieinfo">
-                        <h3>${original_name}</h3>
-                        <span class="green">
-                            <img class="star" src="../img/Star.svg">
-                            ${vote_average}
-                        </span>                
-                    </div>
-                <div class="overview">
-                    ${overview}
-                </div>
-            </div>  
-        `
-        top_rated.appendChild(movieElement);
-    })
     
-};
+    fetch(POPULAR)
+        .then(respose => respose.json())
+        .then(data =>{
+            movies = data.results.slice(0,6)
+            
+            //poster1.src=IMG_URL+ data[1].poster_path;
+            
+            populares.innerHTML = '';
+            movies.forEach(movie => {
+                lista.push(movie);
+                const {id, title, poster_path, vote_average, overview} = movie
+                const movieElement = document.createElement('div');
 
-lancamentosFuturos();
+                movieElement.classList.add('movie');
+                movieElement.innerHTML = `
+                    <div class="movie">
+                        <img class="capa" src="${IMG_URL+poster_path}" alt="${title}"  onClick="loadMovie(${id})">
+                            <div class="movieinfo">
+                                <h3>${title}</h3>
+                                <span class="green">
+                                    <img class="star" src="../img/Star.svg">
+                                    ${vote_average}
+                                </span>                
+                            </div>
+                        <div class="overview">
+                            ${overview}
+                        </div>
+                    </div>  
+                `
+                populares.appendChild(movieElement);
+            })
+        }
+    );
+}
+
 
 function lancamentosFuturos(){
 
     
-    fetch(POPULARES)
+    fetch(UPCOMING)
         .then(respose => respose.json())
         .then(data =>{
             movies = data.results.slice(0,6)
@@ -114,7 +142,43 @@ function lancamentosFuturos(){
             })
         }
     );
+}
 
+function nowPlaying(){
+
+    
+    fetch(NOWPLAYING)
+        .then(respose => respose.json())
+        .then(data =>{
+            movies = data.results.slice(0,6)
+            
+            
+            emAlta.innerHTML = '';
+            movies.forEach(movie => {
+                lista.push(movie);
+                const {id, title, poster_path, vote_average, overview} = movie
+                const movieElement = document.createElement('div');
+
+                movieElement.classList.add('movie');
+                movieElement.innerHTML = `
+                    <div class="movie">
+                        <img class="capa" src="${IMG_URL+poster_path}" alt="${title}"  onClick="loadMovie(${id})">
+                            <div class="movieinfo">
+                                <h3>${title}</h3>
+                                <span class="green">
+                                    <img class="star" src="../img/Star.svg">
+                                    ${vote_average}
+                                </span>                
+                            </div>
+                        <div class="overview">
+                            ${overview}
+                        </div>
+                    </div>  
+                `
+                emAlta.appendChild(movieElement);
+            })
+        }
+    );
 }
 
 function loadMovie(val){

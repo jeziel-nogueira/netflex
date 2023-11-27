@@ -92,3 +92,7 @@ main{
 .movie:hover .movieinfo{
     transform: translateY(0);
 }
+
+#exit{
+    cursor: pointer;
+}

@@ -33,24 +33,37 @@ main{
     height: 100%;
 }
 
-#top_rated{
-    padding-bottom: 20px;
+#lancamentos{
+    padding-top: 10px;
+    margin-bottom: 50px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right,  red 0,  black 20%);
+    background: linear-gradient(to left,  red 0,  black 40%);
 }
 
-#lancamentos{
-    padding-bottom: 20px;
+#populares{
+    padding-top: 10px;
+    margin-bottom: 50px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to left,  red 0,  black 20%);
+    background: linear-gradient(to right,  red 0,  black 40%);
+}
+
+#emAlta{
+    padding-top: 10px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to left,  red 0,  black 40%);
 }
 
 .movie{
@@ -106,28 +119,6 @@ main{
 .movie:hover .movieinfo{
     transform: translateY(0);
 }
-
-/*
-
-.overview{
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #000000bb;
-    padding: 10px;
-    border-radius: 4px;
-    max-height: 100%;
-    transform: translateY(101%);
-    transition: transform 0.5s;
-    color: var(--text-color);
-}
-
-.movie:hover .overview{
-    transform: translateY(0);
-}
-
-*/
 
 #exit{
  cursor: pointer;

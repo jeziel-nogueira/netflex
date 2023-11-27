@@ -1,4 +1,6 @@
 let setMovie = document.getElementById('result');
+var Exit = document.getElementById('exit');
+
 let indexA = 0;
 let indexB = 20;
 
@@ -41,7 +43,6 @@ function buscar(){
     
     let URL = 'https://api.themoviedb.org/3/search/movie?query=' + search.value + '&' + API_KEY;
     search.value = '';
-    //query=termo
 
     loadResults(URL);
 
@@ -90,4 +91,8 @@ function loadMovie(val){
 
 function goCatalogue(){
     window.location.href = "./catalogo.html";
+}
+
+Exit.onclick = function(){
+    sair()
 }

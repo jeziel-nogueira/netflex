@@ -1,13 +1,13 @@
 let setMovie = document.getElementById('movieDetail');
 let sugestoes = document.getElementById('destaque');
+var Exit = document.getElementById('exit');
 
 const API_KEY = 'api_key=3b13d1c5fa5a243ae3eb4ce36a871a8a';
 const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
-const ID_URL = 'https://api.themoviedb.org/3/find/'
 const LANGUAGE = '&language=pt-BR';
 
-const BASE_URL = 'https://api.themoviedb.org/3/find/api_key=3b13d1c5fa5a243ae3eb4ce36a871a8a';
-const FUTUROS =  'https://api.themoviedb.org/3/discover/movie?api_key=3b13d1c5fa5a243ae3eb4ce36a871a8a' + '&page=1&include_adult=true&year=2024&query=mm' + LANGUAGE;
+
+const FUTUROS =  'https://api.themoviedb.org/3/discover/movie?' + API_KEY + '&page=1&include_adult=true&year=2024&query=mm' + LANGUAGE;
 
 let userLogado = JSON.parse(localStorage.getItem('userLogado'));
 
@@ -101,17 +101,8 @@ function getMovieInfo(){
                 </div>
                 `
                 setMovie.appendChild(movieElement);
-
         }
     );
-
-    
-
-
-    
-
-    
-    
 }
 
 
@@ -150,7 +141,6 @@ function filmesSugeridos(){
             })
         }
     );
-
 }
 
 function loadMovie(val){
@@ -176,3 +166,6 @@ function goCatalogue(){
     window.location.href = "./catalogo.html";
 }
 
+Exit.onclick = function(){
+    sair()
+}
