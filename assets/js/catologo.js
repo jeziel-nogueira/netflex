@@ -1,3 +1,5 @@
+//import { KEY } from "./modules/apiKey.js";
+
 let userLogado = JSON.parse(localStorage.getItem('userLogado'));
 let populares = document.getElementById('populares');
 let lancamentos = document.getElementById('lancamentos');
