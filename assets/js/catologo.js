@@ -26,6 +26,7 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 const LANGUAGE = '&language=pt-br'
 const API_URL = BASE_URL + 'discover/tv?sort_by=popularity.desc&' + API_KEY + LANGUAGE;
 
+let lista = [];
 
 getMovies(API_URL);
 
@@ -34,8 +35,6 @@ function getMovies(url){
         .then(respose => respose.json())
         .then(data =>{
             movies = data.results.slice(0,6)
-            console.log(movies)
-            // Movie();
             topMovie();
             Lancamentos();
         }
@@ -44,47 +43,18 @@ function getMovies(url){
 
 
 
-function Movie(){
-    main.innerHTML = '';
-    movies.forEach(movie => {
-        console.log(movie.id)
-        console.log(movie.original_name)
-
-        const ratingImg = document.createElement('img');
-        const {original_name, poster_path, vote_average, overview} = movie
-        const movieElement = document.createElement('div');
-
-        movieElement.classList.add('movie');
-        movieElement.innerHTML = `
-            <div class="movie">
-                <img class="capa" src="${IMG_URL+poster_path}" alt="${original_name}">
-                    <div class="movieinfo">
-                        <h3>${original_name}</h3>
-                        <span class="green">
-                            <img class="star" src="../img/Star.svg">
-                            ${vote_average}
-                        </span>                
-                    </div>
-                <div class="overview">
-                    ${overview}
-                </div>
-            </div>  
-        `
-        main.appendChild(movieElement);
-    })
-    
-};
 
 function topMovie(){
     top_rated.innerHTML = '';
     movies.forEach(movie => {
-            console.log(movie)
-        const {original_name, poster_path, vote_average, overview} = movie
+
+        lista.push(movie);
+        const {original_name, poster_path, vote_average, overview, id} = movie
         const movieElement = document.createElement('div');
 
         movieElement.classList.add('movie');
         movieElement.innerHTML = `
-            <div class="movie">
+            <div class="movie" onClick="loadMovie(${id})">
                 <img class="capa" src="${IMG_URL+poster_path}" alt="${original_name}">
                     <div class="movieinfo">
                         <h3>${original_name}</h3>
@@ -108,12 +78,13 @@ function Lancamentos(){
     lancamentos.innerHTML = '';
     movies.forEach(movie => {
 
-        const {original_name, poster_path, vote_average, overview} = movie
+        const {original_name, poster_path, vote_average, overview, id} = movie
         const movieElement = document.createElement('div');
 
+        lista.push(movie);
         movieElement.classList.add('movie');
         movieElement.innerHTML = `
-            <div class="movie">
+            <div class="movie" onClick="loadMovie(${id})">
                 <img class="capa" src="${IMG_URL+poster_path}" alt="${original_name}">
                     <div class="movieinfo">
                         <h3>${original_name}</h3>
@@ -129,6 +100,25 @@ function Lancamentos(){
         `
         lancamentos.appendChild(movieElement);
     })
+}
+
+function loadMovie(val){
+    lista.forEach(item =>{
+        if(item.id == val){
+            localStorage.setItem('movieId', JSON.stringify(item));
+        }
+    })
+    window.location.href = "./movieDetail.html";
+    
+}
+
+function buscar(){
+    let val = document.getElementById('search');    
+    if(val.value != ''){
+        localStorage.setItem('busca', val.value);    
+        console.log(val.value);
+        window.location.href = "./results.html";
+    }    
 }
 
 Exit.onclick = function(){
