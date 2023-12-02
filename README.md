@@ -14,12 +14,12 @@
 
 ### 🎓 Desafio do projeto
 ><p> Desenvolver um site para consumir uma API de filmes hospedar em um servidor ubuntu para ser acessado em uma rede local,
- >o site deve conter no minimo duas paginas, exibir listas de filmes por categoria, permitir buscas e exibir informaç~es sobreo os filmes.</p>
+ >o site deve conter no minimo duas paginas, exibir listas de filmes por categoria, permitir buscas e exibir informaçoes sobre os filmes.</p>
 
 ### Equipe
- + Jeziel<br>
- + Pedro<br>
- + Vinicius
+> + Jeziel<br>
+> + Pedro<br>
+> + Vinicius
 ##
 ![Captura de Tela (4)](https://github.com/jeziel-nogueira/netflex/assets/119265934/52844284-995c-4826-93ca-e4eb239b9ab3)
 
@@ -31,3 +31,5 @@
 
 ![Captura de Tela (8)](https://github.com/jeziel-nogueira/netflex/assets/119265934/7944b6cf-57ea-43ae-b3a0-53fdebbe4e55)
 
+
+<hr>
